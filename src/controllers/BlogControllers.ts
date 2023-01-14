@@ -22,7 +22,14 @@ class BlogControllers {
             textopost,
         });
         res.status(200).send(response)
-    }
+    };
+
+    deleteBlog = async (req, res) => {
+        const { idpost } = req.params;
+        
+        const response = await BlogServices.delete(parseInt(idpost));
+        res.status(200).send();
+      };
 
 }
 
