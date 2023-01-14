@@ -1,18 +1,16 @@
+import * as dotenv from "dotenv";
 import express from "express";
+import BlogControllers from "./controllers/BlogControllers";
 
 const app = express();
 app.use(express.json());
+dotenv.config();
 
-
-const  PORT  = process.env.PORT || 3000;
+const  { PORT }  = process.env;
 
 app.listen(PORT, () => {
   console.log('running on port'+ PORT);
 });
 
-const BlogServices = require('./services/BlogServices')
-app.post('/blog/insert', BlogServices.insert)
-app.get('/blog', BlogServices.findAll)
-app.get('/blog/:idpost', BlogServices.findbyId)
-app.delete('/blog/:idpost', BlogServices.delete)
-app.put('/blog/:idpost', BlogServices.update)
+
+app.post('/blog/insert', BlogControllers.insert)

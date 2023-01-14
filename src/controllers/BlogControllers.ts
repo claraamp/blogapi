@@ -1,10 +1,30 @@
-class BlogController{
+import BlogServices from "../services/BlogServices";
 
-    constructor() {
-        this.BlogServices = require('../services/BlogServices')
+class BlogControllers {
+
+    insert = async (req,res) => {
+        const {
+            autor,
+            titulo,
+            datacriado,
+            textopost,
+        } : {
+            autor: string;
+            titulo: string;
+            datacriado: Date;
+            textopost: string;
+        } = req.body;
+
+        const response = await BlogServices.insert({
+            autor,
+            titulo,
+            datacriado,
+            textopost,
+        });
+        res.status(200).send(response)
     }
-    
-    async insert(req,res) {
-        const blo
-    }
+
 }
+
+
+export default new BlogControllers();
