@@ -15,3 +15,4 @@ app.listen(PORT, () => {
 
 app.post('/insert', BlogControllers.insert)
 app.delete('/blog/:idpost', BlogControllers.deleteBlog)
+app.get('/blog', BlogControllers.findAll)

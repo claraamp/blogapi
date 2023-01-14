@@ -44,6 +44,16 @@ export class BlogRepository{
     } catch(error) {
       console.log(error)
     }
-}
+  };
+
+  async findAll(){
+    try {
+      const sql = "SELECT * FROM blog"
+      const res = await pool.query(sql)
+      return res;
+    } catch(error) {
+      console.log(error)
+    }
+  }
 }
 export default new BlogRepository();

@@ -5,7 +5,7 @@ import update from "../models/update";
 
 class BlogServices{
 
-    insert = async (data:insert): Promise<insert | null> => {
+    insert = async (data:insert): Promise<insert> => {
         const result = await BlogRepository.createPost(data);
         return result
     };
@@ -13,7 +13,14 @@ class BlogServices{
     delete = async(idpost:number) => {
         const result = await BlogRepository.deletePost(idpost);
         return result
+    };
+
+    findAll = async (): Promise<find> => {
+        const result = await BlogRepository.findAll();
+        return result
     }
+
+
 }
 
 export default new BlogServices();

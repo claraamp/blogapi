@@ -31,6 +31,16 @@ class BlogControllers {
         res.status(200).send();
       };
 
+      findAll = async (req, res) => {
+        const response = await BlogServices.findAll();
+      
+        if (!response) {
+          console.log("error");
+        }
+      
+        res.status(200).send(response);
+      };
+
 }
 
 
