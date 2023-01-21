@@ -1,4 +1,4 @@
-export default interface insert {
+export default interface post {
     autor: string,
     titulo: string,
     datacriado: Date,

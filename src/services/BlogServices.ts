@@ -1,11 +1,10 @@
 import BlogRepository from "../repositories/BlogRepository";
-import insert from "../models/insert";
-import find from "../models/find";
-import update from "../models/update";
+import post from "../models/post";
+
 
 class BlogServices{
 
-    insert = async (data:insert): Promise<insert> => {
+    insert = async (data:post): Promise<post> => {
         const result = await BlogRepository.createPost(data);
         return result
     };
@@ -15,7 +14,7 @@ class BlogServices{
         return result
     };
 
-    findAll = async (): Promise<find> => {
+    findAll = async (): Promise<post> => {
         const result = await BlogRepository.findAll();
         return result
     }
