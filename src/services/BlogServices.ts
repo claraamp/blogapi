@@ -6,7 +6,10 @@ class BlogServices{
 
     insert = async (data:post): Promise<any | null> => {
         const result = await BlogRepository.createPost(data);
-        return result
+        if (!result) {
+            return null;
+          }
+          return result;
     };
 
     delete = async(idpost:number) => {
@@ -16,7 +19,10 @@ class BlogServices{
 
     findAll = async (): Promise<any | null> => {
         const result = await BlogRepository.findAll();
-        return result
+        if (!result) {
+            return null;
+          }
+          return result;
     
     };
 
