@@ -4,7 +4,7 @@ import post from "../models/post";
 
 class BlogServices{
 
-    insert = async (data:post): Promise<post> => {
+    insert = async (data:post): Promise<any | null> => {
         const result = await BlogRepository.createPost(data);
         return result
     };
@@ -14,7 +14,7 @@ class BlogServices{
         return result
     };
 
-    findAll = async (): Promise<post> => {
+    findAll = async (): Promise<any | null> => {
         const result = await BlogRepository.findAll();
         return result
     
