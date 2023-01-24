@@ -53,6 +53,18 @@ export class BlogRepository{
     } catch(error) {
       console.log(error)
     }
-  }
+  };
+
+  async findbyId (idpost:number){
+    try {
+      const sql = `SELECT * FROM blog WHERE idpost = ${idpost}`
+      const value = [idpost]
+      const res = await pool.query(sql, value);
+      return res;
+    } catch(error){
+      console.log(error)
+    }
+  };
+
 }
 export default new BlogRepository();

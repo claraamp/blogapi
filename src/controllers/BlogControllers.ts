@@ -58,7 +58,15 @@ class BlogControllers {
         res.status(200).send(response);
       };
 
-      
+      findbyId = async (req, res) => {
+        const { idpost } = req.params;
+        
+        const response = await BlogServices.findbyId(parseInt(idpost));
+        if (!response) {
+          console.log("error");
+        }
+        res.status(200).send(response);
+      };
 
 }
 
