@@ -16,7 +16,7 @@ class BlogServices{
 
     findAll = async (): Promise<post> => {
         const result = await BlogRepository.findAll();
-        return result
+        return result 
     }
 
 

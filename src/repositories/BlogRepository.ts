@@ -1,7 +1,6 @@
 import * as mysql from 'mysql2/promise';
-import find from '../models/find'
-import insert from '../models/insert';
-import update from '../models/update';
+import post from '../models/post';
+
 
 let poolConfig = {
   connectionLimit: 10,
@@ -17,7 +16,7 @@ let pool = mysql.createPool(poolConfig);
 
 export class BlogRepository{
 
-    async createPost(data: insert) {
+    async createPost(data: post) {
 
         try { 
           const sql =
