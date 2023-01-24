@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import BlogServices from "../services/BlogServices";
 import { middlewares } from "../middlewares";
 
+const { responses, messages, codes } = middlewares;
 
 class BlogControllers {
 
-    insert = async (req,res) => {
+    insert = async (req: Request, res: Response) => {
         const {
             autor,
             titulo,
@@ -24,14 +25,27 @@ class BlogControllers {
             datacriado,
             textopost,
         });
-        res.status(200).send(response)
-    };
+        if (!response) {
+          return responses.error(codes.error(), messages.notFound(), res);
+        }
+        return responses.success(
+          codes.created(),
+          messages.created(),
+          {  autor, titulo, datacriado, textopost },
+          res
+        );
+      };
+
 
     deleteBlog = async (req, res) => {
         const { idpost } = req.params;
         
         const response = await BlogServices.delete(parseInt(idpost));
-        res.status(200).send();
+        if (!response) {
+          return responses.error(codes.error(), messages.error(), res);
+        }
+    
+        return responses.ok(codes.ok(), messages.ok(), res);
       };
 
       findAll = async (req, res) => {
@@ -43,6 +57,8 @@ class BlogControllers {
       
         res.status(200).send(response);
       };
+
+      
 
 }
 

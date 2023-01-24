@@ -1,12 +1,10 @@
-import * as dotenv from "dotenv";
 import express from "express";
 import BlogControllers from "./controllers/BlogControllers";
 
 const app = express();
 app.use(express.json());
-dotenv.config();
 
-const  { PORT }  = process.env;
+const  PORT  = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log('running on port'+ PORT);
