@@ -23,6 +23,14 @@ class BlogServices{
     findbyId = async (idpost:number) => {
         const result = await BlogRepository.findbyId(idpost)
         return result
+    };
+
+    update = async (idpost:number, data: post): Promise<any | null> => {
+        const result = await BlogRepository.update(idpost, data)
+        if (!result) {
+            return null;
+          }
+          return result;
     }
 
 

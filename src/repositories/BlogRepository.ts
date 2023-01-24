@@ -66,5 +66,22 @@ export class BlogRepository{
     }
   };
 
+  async update (idpost:number, data:post){
+    try {
+      const sql = `UPDATE blog SET autor='${data.autor}', titulo='${data.titulo}', datacriado='${data.datacriado}', textopost='${data.textopost}' WHERE idpost = ${idpost}`
+      const value = [
+        data.autor,
+        data.titulo,
+        data.datacriado,
+        data.textopost,
+        idpost
+      ]
+      const res = await pool.query(sql, value);
+      return res;
+    } catch(error){
+      console.log(error)
+    }
+  }
+
 }
 export default new BlogRepository();

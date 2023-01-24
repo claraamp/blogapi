@@ -68,6 +68,32 @@ class BlogControllers {
         res.status(200).send(response);
       };
 
+      update = async (req,res) => {
+        const {
+          autor,
+          titulo,
+          datacriado,
+          textopost,
+      } : {
+          autor: string;
+          titulo: string;
+          datacriado: Date;
+          textopost: string;
+      } = req.body;
+      const { idpost } = req.params;
+      const response = await BlogServices.update(parseInt(idpost), { autor, titulo, datacriado, textopost });
+      if (!response) {
+        return responses.error(codes.error(), messages.error(), res);
+      }
+  
+      return responses.success(
+        codes.ok(),
+        messages.ok(),
+        { autor, titulo, datacriado, textopost },
+        res
+      );
+      }
+
 }
 
 
