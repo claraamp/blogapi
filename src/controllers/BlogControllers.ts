@@ -37,7 +37,7 @@ class BlogControllers {
       };
 
 
-    deleteBlog = async (req, res) => {
+    deleteBlog = async (req: Request, res: Response) => {
         const { idpost } = req.params;
         
         const response = await BlogServices.delete(parseInt(idpost));
@@ -48,7 +48,7 @@ class BlogControllers {
         return responses.ok(codes.ok(), messages.ok(), res);
       };
 
-      findAll = async (req, res) => {
+      findAll = async (req: Request, res: Response) => {
         const response = await BlogServices.findAll();
       
         if (!response) {
@@ -58,17 +58,18 @@ class BlogControllers {
         res.status(200).send(response);
       };
 
-      findbyId = async (req, res) => {
+      findbyId = async (req: Request, res: Response) => {
         const { idpost } = req.params;
         
-        const response = await BlogServices.findbyId(parseInt(idpost));
+        const response = await BlogServices.findbyId(parseInt(idpost)); 
         if (!response) {
-          console.log("error");
+          console.log("error")
         }
-        res.status(200).send(response);
+        res.status(200).send(response)
+        ;
       };
 
-      update = async (req,res) => {
+      update = async (req: Request,res: Response) => {
         const {
           autor,
           titulo,
